@@ -1,0 +1,15 @@
+
+SELECT 
+    o.id AS order_id,
+    o.order_date,
+    o.total_amount,
+    o.status,
+    u.name AS customer_name,
+    d.name AS dish_name,
+    oi.quantity,
+    oi.price AS dish_price
+FROM orders o
+JOIN users u ON o.user_id = u.id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN dishes d ON oi.dish_id = d.id
+WHERE u.name = 'John Doe'; -- Replace 'John Doe' with the specific user's name
