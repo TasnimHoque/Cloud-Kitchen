@@ -1,0 +1,13 @@
+-- Original Query
+SELECT 
+    d.id AS dish_id,
+    d.name AS dish_name,
+    d.description,
+    d.cuisine,
+    d.price
+FROM dishes d
+WHERE 
+    d.name LIKE '%search_term%' 
+    OR d.description LIKE '%search_term%' 
+    OR d.cuisine LIKE '%search_term%'
+ORDER BY d.price DESC;
