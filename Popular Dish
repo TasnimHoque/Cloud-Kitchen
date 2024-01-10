@@ -1,0 +1,10 @@
+-- Original Query
+SELECT 
+    d.id AS dish_id,
+    d.name AS dish_name,
+    COUNT(oi.id) AS order_count
+FROM order_items oi
+JOIN dishes d ON oi.dish_id = d.id
+GROUP BY d.id
+ORDER BY order_count DESC
+LIMIT 1;
