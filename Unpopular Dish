@@ -1,0 +1,11 @@
+-- Original Query
+SELECT 
+    d.id AS dish_id,
+    d.name AS dish_name,
+    MAX(o.order_date) AS last_order_date
+FROM dishes d
+LEFT JOIN order_items oi ON d.id = oi.dish_id
+LEFT JOIN orders o ON oi.order_id = o.id
+GROUP BY d.id
+ORDER BY last_order_date ASC
+LIMIT 20;
