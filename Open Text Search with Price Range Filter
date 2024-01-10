@@ -1,0 +1,18 @@
+-- Updated Query
+SELECT 
+    d.id AS dish_id,
+    d.name AS dish_name,
+    d.description,
+    d.cuisine,
+    d.price
+FROM dishes d
+WHERE 
+    (d.name LIKE '%search_term%' OR d.description LIKE '%search_term%' OR d.cuisine LIKE '%search_term%')
+    AND (
+        (d.price BETWEEN 0 AND 150 AND '0-150' = 'selected_price_range') OR
+        (d.price BETWEEN 151 AND 500 AND '151-500' = 'selected_price_range') OR
+        (d.price BETWEEN 501 AND 1000 AND '501-1000' = 'selected_price_range') OR
+        (d.price >= 1001 AND '1001-above' = 'selected_price_range') OR
+        'selected_price_range' IS NULL
+    )
+ORDER BY d.price DESC;
