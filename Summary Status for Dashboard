@@ -1,0 +1,6 @@
+-- Original Query
+SELECT 
+    COUNT(CASE WHEN DATE(o.order_date) = CURDATE() THEN 1 END) AS total_orders_today,
+    COUNT(CASE WHEN o.status != 'Completed' THEN 1 END) AS total_incomplete_orders,
+    COUNT(CASE WHEN YEARWEEK(o.order_date) = YEARWEEK(CURDATE()) THEN 1 END) AS total_orders_this_week
+FROM orders o;
